@@ -1,0 +1,26 @@
+{
+  "name": "kaartvandeliefde",
+  "version": "0.0.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1",
+    "d3": "~3.5.3",
+    "jquery-easing": "*",
+    "leaflet": "~0.7.3",
+    "valenski": "~0.2.0",
+    "stapes": "~0.8.1",
+    "underscore": "~1.7.0",
+    "handlebars": "~2.0.0",
+    "c3": "~0.4.9",
+    "fastclick": "~1.0.5",
+    "hammerjs": "~2.0.4"
+  }
+}

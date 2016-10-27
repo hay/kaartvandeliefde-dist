@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kaart van de Liefde</title>
+        <script>
+            // Precache the loader
+            (new Image()).src = 'img/loader.gif';
+        </script>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="stylesheet" href="lib/c3/c3.css?v=1475736368433">
+        <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css?v=1475736368433">
+        <link rel="stylesheet" href="css/style.css?v=1475736368433">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-59065746-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div class="loading"></div>
+
+        <div class="container_top">
+            <div class="container_logo">
+                <a class="homebutton" data-toPage="0">
+                    <img class="logo" src="img/logo_beeld.png?v=1475736368433"/>
+                </a>
+        
+                <a class="icon-hzt" href="http://www.hzt.nl/romeoenjulia" target="_blank" title="Naar de website van Het Zuidelijk Toneel"></a>
+            </div>
+        
+            <ul class="container_themaButtons">
+                <li class="btn_nav liefde" data-toPage="1"><span class="icon-heart"></span> <span class="nav_name">Liefde</span></li>
+                <li class="btn_nav lust" data-toPage="2"><span class="icon-condom"></span> <span class="nav_name">Lust</span></li>
+                <li class="btn_nav angst" data-toPage="3"><span class="icon-broken"></span> <span class="nav_name">Angst</span></li>
+            </ul>
+        
+            <ul class="container_otherButtons">
+                <a href="https://twitter.com/intent/tweet?text=Check%20hier%20de%20resultaten%20van%20het%20grote%20liefde%20en%20seks%20onderzoek%20vandaag%20de%20dag%20bij%2018%20tot%2035%20jarigen%20in%20Nederland.%20http%3A%2F%2Fwww.kaartvandeliefde.nl" target="_blank">
+                    <li class="btn_share">
+                        <img src="img/twitter.png?v=1475736368433">
+                    </li>
+                </a>
+        
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.kaartvandeliefde.nl" target="_blank">
+                    <li class="btn_share">
+                        <img src="img/facebook.png?v=1475736368433">
+                    </li>
+                </a>
+        
+                <li class="btn_about">
+                    <span class="icon-about"></span>
+                    <span class="nav_name">Info</span>
+                </li>
+            </ul>
+        </div>
+        <div class="container_left">
+            <div class="container_legendTitle">
+                <span>OVERZICHT</span>
+                <div class="legend_open"><span class="icon-circle-right"></span></div>
+                <div class="legend_close"><span class="icon-circle-left"></span></div>
+            </div>
+            <ul class="legend" id="legend">
+            </ul>
+        </div>
+
+        <div id="filters" class="container_filters"></div>
+
+        <div id="placeselector" class="placeselector contracted"></div>
+
+        <div id="mask_header" class="mask_header">
+            <div class="container_header">
+                <div class="container_page">
+                    <div class="contentHeader frontpage">
+                       <div id="home-logo">
+                            <img src="img/logo.png?v=1475736368433" class="frontpage_logo" alt="Logo kaart van de liefde" />
+                        </div>
+                
+                        <div class="youtube-player-container">
+                            <div class="youtube-player">
+                                <img src="img/youtube-preview.jpg?v=1475736368433">
+                            </div>
+                        </div>
+                
+                        <a href="#" class="btn-big" data-toPage="1">Bekijk de resultaten</a>
+                
+                        <div id="quotes">
+                            <p><span> '33% van de Nederlanders geloven in één ware liefde' </span></p>
+                            <p><span> 'De Nederlander heeft gemiddeld 9 bedpartners gehad' </span></p>
+                            <p><span> '40% van de Nederlandse vrijgezellen zijn bang om alleen te blijven' </span></p>
+                            <p><span> '84% van Nederland beleeft de beste seks met hun huidige partner' </span></p>
+                            <p><span> '30% van de Nederlanders zien liefde en seks nog als één' </span></p>
+                            <p><span> '45% van de Nederlanders denken dat het niet makkelijk is een (nieuwe) relatie te vinden' </span></p>
+                            <p><span> '33% van de Nederlanders hebben wel eens online gedate' </span></p>
+                            <p><span> '25% van de Nederlanders zijn ontevreden over hun seksleven' </p>
+                            <p><span> '9% van de Nederlanders zouden het niet erg vinden om alleen te blijven' </span></p>
+                            <p><span> 'De Nederlander heeft gemiddeld 2 serieuze relaties gehad' </span></p>
+                            <p><span> '2% van de Nederlanders voelen zich niet fysiek aangetrokken tot hun partner' </span></p>
+                            <p><span> '29% van de Nederlanders beschouwen zichzelf als een catch' </span></p>
+                            <p><span> '32% van de Nederlanders hebben gescheiden ouders' </span></p>
+                            <p><span> '6% van de Nederlanders hebben liever seks dan een relatie' </span></p>
+                            <p><span> '57% van de Nederlanders vinden het lastig om hun fouten en zwakte toe te geven' </span></p>
+                        </div>
+                
+                        <p class="frontpage-text">
+                            <a href="#" data-toPage="1">
+                                Check hier de resultaten van het grote liefde en seks onderzoek vandaag de dag bij 18 tot 35 jarigen in Nederland.
+                            </a>
+                        </p>
+                
+                        <p class="frontpage-text buffer-top-4">Beinvloed de resultaten van deze kaart:</p>
+                
+                        <a href="https://dynamic-concepts.socratos.net/direct/romeo&amp;julia" class="btn-lg">
+                            Vul de vragenlijst in
+                        </a>
+                
+                        <h1 class="display-xs">
+                            Deze website is geoptimaliseerd voor tablets en desktops. Op mobiel zijn helaas niet alle functionaliteiten aanwezig.
+                        </h1>
+                
+                        <ul class="thumblist thumblist-center">
+                            <li><a href="http://www.bnn.nl"><img src="img/bnnlogo.png?v=1475736368433"></a></li>
+                            <li><a href="http://www.avans.nl"><img src="img/avans-hogeschool-logo.png?v=1475736368433"></a></li>
+                            <li><a href="http://www.parship.nl"><img src="img/parship-logo.jpg?v=1475736368433"></a></li>
+                            <li><a href="http://www.dynamic-concepts.nl/"><img src="img/dynamic-concepts.png?v=1475736368433"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div id="about">
+            <div id="about_background">
+                <div id="about_container">
+                    <a class="close">&times;</a>
+        
+                    <h1>Over</h1>
+                    <p class="lead">Dit onderzoek is opgezet op verzoek van Lucas De Man; regisseur van de voorstelling <a href="http://www.hzt.nl/romeoenjulia">Romeo &amp; Julia bij Het Zuidelijk Toneel</a>. Lucas (32 jaar) wilde een Romeo &amp; Julia maken die gaat over de huidige generatie 20ers en 30ers. Hoe zien en ervaren zij de liefde nu? Dat vroeg hij zich af.</p>
+        
+                    <p>De resultaten van het onderzoek verwerkte Lucas in de verschillende personages van de voorstelling. Romeo &amp; Julia zijn geen 14 en 15 jaar zoals in het origineel maar 30ers, omgeven door hun vrienden en carrières.  Daarnaast  gooide Lucas de ouders uit het stuk, selecteerde een steengoede cast generatiegenoten en vroeg Nik van den Berg om vette live muziek te komen maken.</p>
+        
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XfoDl9wrfAQ?rel=0" frameborder="0" allowfullscreen></iframe>
+        
+                    <h5>Samenwerkingen</h5>
+                    Het onderzoek is opgezet in samenwerking met onderzoeksbureau Dynamic Concepts en BNN. Om zoveel mogelijk resultaat te behalen, is bij het uitzetten van de enquête hulp verkregen van alle deelnemende theaters, BNN, Parship en Avans Hogeschool. De studenten van de minor Data Beleving aan Avans Hogeschool in 's-Hertogenbosch hebben tot slot de resultaten vormgegeven en de digitale Kaart van de Liefde ontwikkeld.
+        
+                    Op 12 maart gaat de voorstelling in première in Tilburg en staat daarna overal in Nederland en België. <a href="http://www.hzt.nl">Klik hier voor kaarten en meer informatie</a>.
+        
+                    <h5>Partners</h5>
+        
+                    <ul class="thumblist">
+                        <li><a href="http://www.bnn.nl"><img src="img/bnnlogo.png?v=1475736368433"></a></li>
+                        <li><a href="http://www.avans.nl"><img src="img/avans-hogeschool-logo.png?v=1475736368433"></a></li>
+                        <li><a href="http://www.parship.nl"><img src="img/parship-logo.jpg?v=1475736368433"></a></li>
+                        <li><a href="http://www.dynamic-concepts.nl/"><img src="img/dynamic-concepts.png?v=1475736368433"></a></li>
+                    </ul>
+        
+                    <h5>Colofon</h5>
+        
+                    <dl class="credit-list credit-list-left">
+                        <dt>Regie en concept</dt>
+                        <dd>Lucas de Man</dd>
+                        <dd>Joep Grooteman</dd>
+        
+                        <dt>Coördinatie vormgeving</dt>
+                        <dd>Brenda Renssen</dd>
+        
+                        <dt>Coördinatie techniek</dt>
+                        <dd>Hay Kranen</dd>
+        
+                        <dt>Coördinatie vanuit Avans</dt>
+                        <dd>Bertus Rosier</dd>
+        
+                        <dt>Groepshoofden</dt>
+                        <dd>Dirk Kremers</dd>
+                        <dd>Joanne van Hemsbergen</dd>
+        
+                        <dt>Techniek</dt>
+                        <dd>Kenneth de Brabander</dd>
+                        <dd>Mitch de Peffer</dd>
+                        <dd>Stef van Zon</dd>
+        
+                        <dt>Animatie</dt>
+                        <dd>Nick van Dam</dd>
+        
+                        <dt>Coördinatie enquete</dt>
+                        <dd>Emmy Mutsaers</dd>
+                    </dl>
+        
+                    <dl class="credit-list credit-list-right">
+                        <dt>Studenten Minor Databeleving</dt>
+                        <dd>Tomas van der Aa</dd>
+                        <dd>Esther Bergé</dd>
+                        <dd>Vincent van den Boogaard</dd>
+                        <dd>Lotje Chabot</dd>
+                        <dd>Tom van Dijk</dd>
+                        <dd>Leon van Gemert</dd>
+                        <dd>Nick Groeneveld</dd>
+                        <dd>Sander op 't Hof</dd>
+                        <dd>Josselien Huijbers</dd>
+                        <dd>Thijs de Jong</dd>
+                        <dd>Tom Klaversma</dd>
+                        <dd>Luuk Leijtens</dd>
+                        <dd>Pascal Lemmen</dd>
+                        <dd>Ellen Michels</dd>
+                        <dd>Koen Molthoff</dd>
+                        <dd>Sergio Putinela</dd>
+                        <dd>Tom Raas</dd>
+                        <dd>Dylan Sengers</dd>
+                        <dd>Koen Smeding</dd>
+                        <dd>Stephan Tenbült</dd>
+                        <dd>Thomas van der Veen</dd>
+                        <dd>Bas Wouters</dd>
+                        <dd>Quincy Zweers</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Templates -->
+        <script type="text/html" id="tmpl-theme">
+            <div class="themepage theme_{{themeId}} container_page">
+                <div class="contentHeader {{themeId}}" data-theme="{{themeId}}">
+                    <div class="container_scrollDown"></div>
+                    <div class="map-info">De grootte van de bollen geeft het aantal respondenten aan voor die gemeente.</div>
+                </div>
+            
+                {{#each charts}}
+                    <div class="contentBlock">
+                        <div class="container_content">
+                            <div class="quote"></div>
+                            <div class="chartcontainer" data-theme="{{../themeId}}" data-index="{{@index}}"></div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </script>
+
+        <script type="text/html" id="tmpl-filters">
+            <ul class="filterlist">
+                {{#each filters}}
+                    <li class="filterlist-header">{{name}}</li>
+            
+                    {{#each values}}
+                        <li class="filterlist-item {{#if selected}}active{{/if}}"
+                            data-filter="{{../key}}"
+                            data-label="{{label}}"
+            
+                            {{#if type}}
+                            data-type="{{type}}"
+                            {{/if}}
+            
+                            {{#if ../place}}
+                            data-is-place
+                            {{/if}}
+                        >
+                            {{{label}}}
+                        </li>
+                    {{/each}}
+            
+                    {{#if place}}
+                        <li class="filterlist-item filterlist-place" data-filter="place" data-type="addplace">
+                            Voeg locatie toe
+                        </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </script>
+
+        <script src="js/dist.js?v=1475736368433"></script>
+
+        <script>
+            $(document).ready(function() {
+                window.datastore = new DataStore('data/data.json');
+                window.datastore.load( initApp );
+            });
+        </script>
+    </body>
+</html>
